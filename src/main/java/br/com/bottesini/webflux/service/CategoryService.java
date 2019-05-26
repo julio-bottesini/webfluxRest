@@ -2,6 +2,7 @@ package br.com.bottesini.webflux.service;
 
 import br.com.bottesini.webflux.domain.Category;
 import br.com.bottesini.webflux.repository.CategoryRepository;
+import org.reactivestreams.Publisher;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -21,5 +22,9 @@ public class CategoryService {
 
     public Mono<Category> getById(String id){
         return categoryRepository.findById(id);
+    }
+
+    public Mono<Void> create(Publisher category) {
+        return categoryRepository.saveAll(category).then();
     }
 }
