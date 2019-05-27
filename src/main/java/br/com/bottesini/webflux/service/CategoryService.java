@@ -27,4 +27,14 @@ public class CategoryService {
     public Mono<Void> create(Publisher category) {
         return categoryRepository.saveAll(category).then();
     }
+
+    public Mono<Category> update(String id, Category category) {
+
+        if(categoryRepository.findById(id).block() != null) {
+            category.setId(id);
+            return categoryRepository.save(category);
+        }
+
+        return null;
+    }
 }
