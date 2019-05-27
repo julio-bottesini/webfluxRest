@@ -1,5 +1,6 @@
 package br.com.bottesini.webflux;
 
+import br.com.bottesini.webflux.controller.CategoryController;
 import br.com.bottesini.webflux.domain.Category;
 import br.com.bottesini.webflux.repository.CategoryRepository;
 import br.com.bottesini.webflux.service.CategoryService;
@@ -7,12 +8,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.BDDMockito;
 import org.mockito.Mockito;
-import org.reactivestreams.Publisher;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import static org.hamcrest.Matchers.any;
 
 public class CategoryTest {
 

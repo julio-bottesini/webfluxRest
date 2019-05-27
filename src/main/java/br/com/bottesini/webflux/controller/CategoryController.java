@@ -1,4 +1,4 @@
-package br.com.bottesini.webflux;
+package br.com.bottesini.webflux.controller;
 
 import br.com.bottesini.webflux.domain.Category;
 import br.com.bottesini.webflux.service.CategoryService;
