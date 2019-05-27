@@ -37,4 +37,23 @@ public class VendorService {
 
         return null;
     }
+
+    public Mono<Vendor> partialUpdate(String id, Vendor vendor) {
+
+        Vendor foundVendor = vendorRepository.findById(id).block();
+
+        if(foundVendor != null && !isVendorsInfoTheSame(vendor, foundVendor)) {
+
+            foundVendor.setFirstName(vendor.getFirstName());
+            foundVendor.setLastName(vendor.getLastName());
+            return vendorRepository.save(foundVendor);
+        }
+
+        return Mono.just(foundVendor);
+    }
+
+    private boolean isVendorsInfoTheSame(Vendor vendor, Vendor foundVendor) {
+        return foundVendor.getFirstName().equals(vendor.getFirstName()) &&
+           foundVendor.getLastName().equals(vendor.getLastName());
+    }
 }

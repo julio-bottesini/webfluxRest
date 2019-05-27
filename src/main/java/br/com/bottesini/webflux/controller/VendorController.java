@@ -1,5 +1,6 @@
 package br.com.bottesini.webflux.controller;
 
+import br.com.bottesini.webflux.domain.Category;
 import br.com.bottesini.webflux.domain.Vendor;
 import br.com.bottesini.webflux.service.VendorService;
 import org.reactivestreams.Publisher;
@@ -39,5 +40,10 @@ public class VendorController {
     @PutMapping("/{id}")
     public Mono<Vendor> update(@PathVariable String id, @RequestBody Vendor vendor){
         return vendorService.update(id, vendor);
+    }
+
+    @PatchMapping("/{id}")
+    public Mono<Vendor> partialUpdate(@PathVariable String id, @RequestBody Vendor vendor){
+        return vendorService.partialUpdate(id, vendor);
     }
 }

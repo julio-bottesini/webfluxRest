@@ -37,4 +37,17 @@ public class CategoryService {
 
         return null;
     }
+
+    public Mono<Category> partialUpdate(String id, Category category) {
+
+        Category foundCategory = categoryRepository.findById(id).block();
+
+        if(foundCategory != null && !foundCategory.getDescription().equals(category.getDescription())) {
+
+            foundCategory.setDescription(category.getDescription());
+            return categoryRepository.save(foundCategory);
+        }
+
+        return Mono.just(foundCategory);
+    }
 }

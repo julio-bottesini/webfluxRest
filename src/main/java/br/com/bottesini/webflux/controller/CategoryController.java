@@ -40,4 +40,9 @@ public class CategoryController {
     public Mono<Category> update(@PathVariable String id, @RequestBody Category category){
         return categoryService.update(id, category);
     }
+
+    @PatchMapping("/{id}")
+    public Mono<Category> partialUpdate(@PathVariable String id, @RequestBody Category category){
+        return categoryService.partialUpdate(id, category);
+    }
 }
